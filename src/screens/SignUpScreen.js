@@ -67,7 +67,7 @@ const SignUpScreen = ({ navigation }) => {
     };
 
     const callStateListAPI = () => {
-        axios.get(`http://52.191.8.59:8080/users/get-states`)
+        axios.get(`http://localhost/users/get-states`)
             .then(res => {
                 console.log("data : " + res.data);
                 setStateList(res.data.data);
