@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, Image, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
 import { StackActions } from '@react-navigation/native';
@@ -8,7 +8,7 @@ import * as Constants from '../utils/Constants';
 import { Colors } from '../resources/Colors';
 import { Styles } from '../resources/Styles';
 import * as Drawables from '../resources/drawables/Drawables'
-
+import {checkPermission,PERMISSION_TYPE} from './PermissionScreen'
 
 const LoginScreen = ({ navigation }) => {
 
@@ -18,6 +18,10 @@ const LoginScreen = ({ navigation }) => {
     const [password, setPassword] = useState('');
     const [isLoading, setLoading] = useState(false);
 
+    useEffect(()=>{
+       checkPermission(PERMISSION_TYPE.camera)
+    })
+    
     const passwordImageClick = () => {
         setPasswordShowing(!isPassWordShowing);
         if (isPassWordShowing) {
